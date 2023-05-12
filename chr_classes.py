@@ -1,3 +1,6 @@
+import ramdomizer
+
+
 #Super Class
 class Character:
     def __init__(self,name,defense,speed,life):
@@ -74,6 +77,52 @@ class Mague(Magic):
     def __init__(self, name, defense, speed, life, power, book):
         super().__init__(name, defense, speed, life, power, book)     
         
-        
-Pj1 = Mague('Carlos',20,80,100,50,'dildo')     
-print(Pj1.atributes())   
+
+# Pj1 = Mague('Carlos',20,80,100,50,'Katana')     
+#     print(Pj1.atributes())   
+
+
+if __name__ == "__main__":        
+    
+    def crear_pj():
+        print('')  
+        print('Creating character')
+        print('------------')
+        name = input("Name: ")
+        print('')    
+        print('Classes: 1)Assasin 2)Warrior 3)Shooter 4)Healer 5)Mague') 
+        print('')
+        choice = 0
+        while choice <=0 or choice >5:
+            choice = int(input("Class: "))
+            if choice <=0 or choice >5:
+                print('Invalid number, choose between 1 and 5')
+            
+            if choice == 1:
+                
+                def_points,speed_points,life_points,strenght_points = ramdomizer.stats(1)
+                objeto= Assasin(name,def_points,speed_points,life_points,strenght_points,"xd")
+                
+            elif choice == 2:
+                def_points,speed_points,life_points,strenght_points = ramdomizer.stats(2)
+                objeto = Warrior(name,def_points,speed_points,life_points,strenght_points,"xd")
+                
+            elif choice == 3:
+                def_points,speed_points,life_points,strenght_points = ramdomizer.stats(3)
+                objeto = Shooter(name,def_points,speed_points,life_points,strenght_points,"xd")
+                
+            elif choice == 4:
+                def_points,speed_points,life_points,power_points = ramdomizer.stats(4)
+                objeto = Healer(name,def_points,speed_points,life_points,power_points,"xd")
+                
+            elif choice == 5:
+                def_points,speed_points,life_points,power_points = ramdomizer.stats(5)
+                objeto = Mague(name,def_points,speed_points,life_points,power_points,"xd") 
+                  
+                                                 
+        return objeto
+          
+    
+
+
+print(crear_pj().atributes())
